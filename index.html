@@ -1,63 +1,14 @@
 <!doctype html>
 <html lang="ja">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Retail Receipt Intelligence</title>
-<style>body{max-width:1050px;margin:auto;padding:32px;background:#f7f5ef;color:#17221e;font:17px/1.8 system-ui}nav{text-align:right}a{color:#17604b;margin-left:20px;font-weight:bold}.tag,b{color:#17604b}.hero{font-size:clamp(42px,7vw,76px);line-height:1.08;margin:80px 0 24px}.facts,.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-block:1px solid #ddd;margin:50px 0}.facts div,.grid div{padding:22px;border-right:1px solid #ddd}.facts b{display:block;font-size:34px}.dark{background:#185b48;color:white;padding:34px;border-radius:10px}.grid{grid-template-columns:1fr 1fr;background:#fff}.grid h3{margin:0}.note{color:#62716a;font-size:14px}@media(max-width:650px){.facts,.grid{grid-template-columns:1fr}.hero{margin-top:45px}}</style>
-<body>
-<nav>
-<b>日本語</b>
-<a href="zh.html">中文</a>
-<a href="en.html">EN</a>
-</nav>
-<p class="tag">BUSINESS CASE / 2026</p>
-<h1 class="hero">百貨店の購買を、<br>継続的に活用できる顧客データへ。</h1>
-<p>訪日中国人顧客向け WeChat ミニプログラムを事業側から企画・推進。会員登録、レシート OCR、特典運用をつなぎ、店舗での一回限りの購買を CRM の起点に変えた。</p>
-<section class="facts">
-<div>
-<b>500+</b>追跡可能な購買顧客 ID</div>
-<div>
-<b>800+</b>有効レシート</div>
-<div>
-<b>¥70M+</b>Traceable GMV</div>
-</section>
-<p class="note">約1か月の実証期間。Traceable GMV は顧客 ID と紐付けて捕捉した購買額であり、施策起因売上ではない。</p>
-<h2>1. 課題を定義した</h2>
-<p>既存データでは取引金額は見えても、誰がどのブランド・カテゴリ・SKU を購入したかを継続して把握できなかった。これは販促の精度、ブランド協業、リピート施策のすべてを制約する問題だった。</p>
-<h2>2. 実行可能な入口を選んだ</h2>
-<section class="dark">
-<h3>POS 全面連携を待たない判断</h3>
-<p>POS・既存会員基盤との連携は理想だが、複数システム、部門、ベンダーをまたぐ。顧客自身によるレシートアップロードは、現場負荷を増やさずに実購買データを取得し、価値を先に検証するための現実的な選択だった。</p>
-</section>
-<section class="grid">
-<div>
-<h3>採用しなかった案</h3>
-<p>POS 直接連携、店員の手入力、会員登録だけの設計。いずれも速度、データ品質、または実購買の把握で課題が残った。</p>
-</div>
-<div>
-<h3>採用した設計</h3>
-<p>会員 ID、レシート画像、OCR、審査、ポイント、特典を一つの運用フローにした。将来の POS・EC 連携を妨げない構成とした。</p>
-</div>
-</section>
-<h2>3. 運用できる仕組みにした</h2>
-<p>消費者向けミニプログラム、管理画面、API、OCR、ポイント、ギフト引換を連携。レシート処理には自動・手動審査、重複検知、金額異常フラグを組み込んだ。OCR は複数案を比較し、主識別、金額勘定、人工確認を組み合わせた運用設計にした。</p>
-<h2>4. 技術アーキテクチャへの関与</h2>
-<p>コード実装は担当していないが、技術を事業要件と運用要件に翻訳し、ベンダーの設計・見積・実装範囲を判断した。顧客導線、管理画面、OCR、画像保管、審査、ポイント、分析出力を、一つの運用アーキテクチャとして設計した。</p>
-<section class="grid"><div><h3>構成の判断</h3><p>モバイル画面、管理画面、API、データベース、キャッシュ、オブジェクトストレージ、コンテナ運用を分離。将来の機能追加と日常運用の両方に耐える境界を確認した。</p></div><div><h3>品質の判断</h3><p>OCR は「読めるか」ではなく、合計、税額、明細、重複、例外処理までを評価対象にした。認識結果をそのまま付与に使わず、金額照合と人手確認を残した。</p></div></section>
-<h2>5. 技術を事業成果に変える進め方</h2><p>事業目的、コスト、現場負荷、データ品質、将来連携を比較して優先順位を決めた。今期に検証すべき機能と、POS・EC・自動化へ残す機能を分け、過剰な初期投資を避けた。</p>
-<h2>6. データの使い方を変えた</h2><p>金額だけでなく、ブランド、カテゴリ、SKU、価格帯、購買時点、購買組合せを扱えるようにした。顧客価値の偏り、ブランド別構成、購買バスケット、対象者別施策を検討できる基盤を作った。</p>
-<h2>7. 私の役割</h2>
-<section class="grid">
-<div>
-<h3>構想と意思決定</h3>
-<p>事業課題の定義、導入方針、ベンダー選定、要件優先順位、Phase 2 のロードマップを主導。</p>
-</div>
-<div>
-<h3>推進と検証</h3>
-<p>社内外の調整、開発・テスト・ローンチ推進、キャンペーン運用、データ検証を担った。ソフトウェア実装は外部ベンダーが担当。</p>
-</div>
-</section>
-<h2>5. 次の事業価値</h2>
-<p>捕捉した購買データを、会員分層、対象者別の特典、EC 誘導、ブランド別の顧客理解へ拡張する。Phase 1 は、これらを可能にするデータ取得と運用モデルの検証だった。</p>
-</body>
-</html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="百貨店の購買を継続的に活用できる顧客データへ変える、WeChat ミニプログラムの事業ケース。"><title>Retail Receipt Intelligence | Case Study</title><link rel="stylesheet" href="assets/case-study.css"></head>
+<body><main class="shell">
+<header class="top"><span class="kicker">Business case / 2026</span><nav class="language" aria-label="Language"><b>日本語</b><a href="zh.html">中文</a><a href="en.html">EN</a></nav></header>
+<section class="hero"><div><div class="kicker">Japan retail · WeChat mini program · CRM</div><h1>百貨店の購買を、<br>継続的に活用できる<br>顧客データへ。</h1><p>訪日中国人顧客の「一度の買い物」を、会員・レシート・特典運用でつなぐ。現場に過度な負担をかけず、購買理解と次の顧客接点をつくるための事業実証を、事業側から企画・推進した。</p></div><div class="hero-art"><img src="assets/retail-campaign.jpg" alt="Retail campaign visual"></div></section>
+<section class="facts"><div class="fact"><strong>500+</strong><span>追跡可能な購買顧客 ID</span></div><div class="fact"><strong>800+</strong><span>有効レシート</span></div><div class="fact"><strong>¥70M+</strong><span>Traceable GMV</span></div></section><p class="metric-note">約1か月の実証期間。Traceable GMV は顧客 ID と紐付けて捕捉した購買額であり、施策による増分売上ではない。</p>
+<section class="section"><div class="kicker">01 / Business problem</div><h2>金額は見える。<br>しかし「誰が、何を買ったか」は見えない。</h2><p class="lead">既存の取引情報だけでは、訪日顧客の ID、購入ブランド、カテゴリ、価格帯、買い合わせを継続的に捉えられない。会員施策、ブランド協業、リピート提案が、推測に留まる構造だった。</p><div class="grid2"><article class="card"><h3>従来の状態</h3><p>一回限りの店舗取引。取引金額はあっても、顧客別・ブランド別に再利用できる購買シグナルが不足していた。</p></article><article class="card"><h3>目指した状態</h3><p>会員 ID と購買証憑を結び、ブランド・カテゴリ・金額・時点を構造化。次の運用判断に使える顧客理解をつくる。</p></article></div></section>
+<section class="section"><div class="kicker">02 / Decision rationale</div><h2>なぜ POS 連携を待たず、<br>レシート起点にしたのか。</h2><p class="lead">結論は「最も高度な技術」ではなく、「最も早く、実購買データと運用可能性を同時に検証できる入口」を選ぶことだった。</p><div class="dark"><div class="kicker">Choice made</div><h2>顧客自身のレシート登録で、価値を先に実証する。</h2><p class="lead">POS・会員基盤の直接連携は将来像として有効だが、複数システム、部門、ベンダーをまたぐ。初期は顧客の自発的な登録を入口とし、データ品質、特典運用、行動変化を小さく検証した。</p><div class="grid2"><article class="card"><h3>優先しなかった選択肢</h3><p>POS 直接連携は時間と調整コストが大きい。店員の手入力は現場負荷と再現性に課題がある。登録やアンケートだけでは、実際の購買内容を確認できない。</p></article><article class="card"><h3>選んだ設計</h3><p>会員 ID、レシート画像、OCR、審査、ポイント、ギフトを一つの運用ループにする。将来の POS・EC 連携を阻害しない、段階的な構成とした。</p></article></div></div></section>
+<section class="section"><div class="kicker">03 / Operating model</div><h2>プロダクトではなく、<br>運用される仕組みとして設計した。</h2><p class="lead">顧客の操作だけで完結させず、確認・例外処理・特典付与・分析までを一つの業務フローに置いた。</p><div class="flow"><div class="node">WeChat ログイン<br>会員登録</div><div class="node">店舗での購買<br>レシート受領</div><div class="node">レシート画像を<br>アップロード</div><div class="node">OCR 抽出<br>照合・審査</div><div class="node">会員 ID に紐付け<br>特典を付与</div><div class="node">CRM 分析と<br>次の施策へ</div></div><p class="callout">自動化だけを前提にせず、重複・金額異常・読み取り不確実な証憑を扱う確認導線を残した。運用不能な自動化を避けるための設計である。</p></section>
+<section class="section"><div class="kicker">04 / Technical governance</div><h2>コードを書かなくても、<br>技術判断には参加する。</h2><p class="lead">ソフトウェア実装は外部ベンダーが担当。私は事業・運用要件を、受入条件と設計判断に変換し、構成、品質、費用、実装範囲の意思決定に関与した。</p><div class="architecture"><div class="diagram" aria-label="System architecture abstraction"><div class="layer">顧客導線：会員登録 / レシート登録 / 特典確認</div><div class="layer">運用導線：審査 / 会員検索 / キャンペーン / 引換</div><div class="layer">業務サービス：OCR / ポイント / ギフト / 分析出力</div><div class="layer">基盤：API / データベース / キャッシュ / 画像保管 / コンテナ運用</div></div><div class="card"><h3>判断したポイント</h3><ul><li>顧客画面と運用画面を分離し、日常業務を成立させる</li><li>OCR を「読み取り率」ではなく、合計・税額・明細・例外処理で評価する</li><li>OCR 結果を直接の特典付与に使わず、照合と人手確認を残す</li><li>将来の POS・EC 接続を阻害しないデータ・モジュール境界にする</li></ul></div></div><div class="grid3"><article class="card"><h3>品質基準</h3><p>合計金額・税額・明細・日時など、運用上必要な項目を比較し、金額整合性と例外処理を受入条件にした。</p></article><article class="card"><h3>ベンダー判断</h3><p>機能の有無だけでなく、運用負荷、将来拡張、費用、実装優先順位を比較してスコープを決めた。</p></article><article class="card"><h3>データ設計</h3><p>画像、OCR 状態、購買時点、金額、明細、ポイント、審査状態、異常フラグを追える形に要求を定義した。</p></article></div></section>
+<section class="section"><div class="kicker">05 / My ownership</div><div class="role"><div><h2>事業側<br>プロジェクトオーナー</h2><p class="quote">課題を定義し、実現可能な入口を選び、外部開発を事業成果につなげるところまでを担った。</p></div><ul class="checklist"><li>対象顧客、事業目的、検証範囲、導入方針の設計</li><li>ベンダー選定、提案・見積の比較、仕様優先順位の決定</li><li>会員、証憑、審査、ポイント、ギフトの業務ルール設計</li><li>社内外の調整、開発・テスト・ローンチの推進</li><li>初期キャンペーンとデータ検証を通じた運用モデルの確認</li><li>Phase 2 の会員セグメント・EC 連携・分析拡張の構想</li></ul></div></section>
+<section class="section"><div class="kicker">06 / What changed</div><h2>「売上集計」を、<br>顧客理解の起点に変えた。</h2><div class="grid2"><article class="card"><h3>実証で確認したこと</h3><p>顧客 ID と購買証憑を結び、実購買の構造を継続して扱える入口を作った。購買規模、ブランド別構成、カテゴリ、価格帯、買い合わせを次の分析対象にできる状態になった。</p></article><article class="future"><h3>次の段階</h3><p>会員セグメント別の特典、年間累計、EC 誘導、ブランド別の顧客理解、より深いデータ連携へ拡張する。これらは次フェーズの計画であり、実証済みの機能とは区別している。</p></article></div></section>
+</main><footer class="shell footer">Retail Receipt Intelligence · Japan-market retail operating reference · Business-side project ownership</footer></body></html>
